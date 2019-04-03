@@ -8,10 +8,18 @@ class pizza_catalog_view{
     	//definir variables privadas
     }
 
-    public function generate_pizza_catalog(){
-    	
-
+    public function generate_pizza_catalog($pizzas, $ingredients){
+    	foreach($pizzas as $id_pizza => $pizza){
+    		$pizza_name = '<h4>'. $pizza['name']. '</h4>';
+    		$pizza_cost = $pizza['cost'];
+    		$pizza_image = '<img src="/img/'. $id_pizza. '.jpg" alt="'. $pizza['name']. '">'; 
+    		$pizza_ingredients = join(" ,", $ingredients[$id_pizza]);
+    		$pizza_divs[] = '<div>'. $pizza_name. $pizza_image. $pizza_cost. $pizza_ingredients. '</div>';
+    	}
+    	$pizza_catalog = join("", $pizza_divs);
     	$html = $this->generate_html($pizza_catalog);
+    	
+    	return $html;
     }
 
     private function generate_html($inner_html){
