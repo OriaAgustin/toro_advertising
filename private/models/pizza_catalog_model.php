@@ -1,10 +1,35 @@
 <?php
 
+require_once($_SERVER['DOCUMENT_ROOT']. '/private/kint.phar');
+
 class pizza_catalog_model{
-    private $pizza_catalog_view;
-    private $pizza_catalog_model;
+    private $mysql;
 
     public function __construct(){
-    	//definir variables privadas
+    	$this->mysql = new mysqli('localhost', 'root', '', 'toro_advertising');
+    }
+
+    public function get_pizzas(){
+    	$query = 'SELECT * FROM pizzas';
+    	$data = $this->mysql->query($query);
+    	while($register = $data->fetch_assoc()){
+            $id_pizza = $register['id_pizza'];
+            unset($register['id_pizza']);
+            $pizzas[$id_pizza] = $register;
+        }
+
+        return $pizzas;
+    }
+
+    public function get_ingredients($pizzas){
+        foreach($pizzas as $id_pizza => $pizza){
+        	$query = 'SELECT name FROM ingredients WHERE id_ingredient IN(SELECT id_ingredient FROM recipes WHERE id_pizza = '. $id_pizza. ')';
+	    	$data = $this->mysql->query($query);
+	        while($register = $data->fetch_assoc()){
+	            $ingredients[$id_pizza][] = $register['name'];
+	        }
+        }
+        
+        return $ingredients;
     }
 }
