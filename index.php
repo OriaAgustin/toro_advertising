@@ -5,5 +5,5 @@ $pizza_catalog_controller = new pizza_catalog_controller();
 
 switch($_REQUEST['ajax']){
 	default:
-		$pizza_catalog_controller->generate_pizza_catalog();
+		print $pizza_catalog_controller->generate_pizza_catalog();
 }

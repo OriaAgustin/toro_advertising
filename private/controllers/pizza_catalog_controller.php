@@ -13,6 +13,9 @@ class pizza_catalog_controller{
     }
 
     public function generate_pizza_catalog(){
-    	return $this->pizza_catalog_view->generate_pizza_catalog();
+    	$pizzas = $this->pizza_catalog_model->get_pizzas();
+    	$ingredients = $this->pizza_catalog_model->get_ingredients($pizzas);
+    	
+    	return $this->pizza_catalog_view->generate_pizza_catalog($pizzas, $ingredients);
     }
 }
