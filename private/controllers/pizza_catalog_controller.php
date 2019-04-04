@@ -14,8 +14,16 @@ class pizza_catalog_controller{
 
     public function generate_pizza_catalog(){
     	$pizzas = $this->pizza_catalog_model->get_pizzas();
-    	$ingredients = $this->pizza_catalog_model->get_ingredients($pizzas);
+    	$ingredients = $this->pizza_catalog_model->get_pizzas_ingredients($pizzas);
     	
     	return $this->pizza_catalog_view->generate_pizza_catalog($pizzas, $ingredients);
+    }
+
+    public function generate_order_pizza($id_pizza){
+    	$pizza = $this->pizza_catalog_model->get_pizzas($id_pizza);
+    	$added_ingredients = $this->pizza_catalog_model->get_pizzas_ingredients($pizza);
+    	$ingredients = $this->pizza_catalog_model->get_all_ingredients();
+
+    	return $this->pizza_catalog_view->generate_order_pizza($id_pizza, $pizza[$id_pizza], $added_ingredients[$id_pizza], $ingredients);
     }
 }
