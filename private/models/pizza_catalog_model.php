@@ -48,4 +48,13 @@ class pizza_catalog_model{
 
         return $ingredients;
     }
+
+    public function get_pizza_cost($ingredients){
+    	$ingredients = json_decode($ingredients, true);
+    	$query = 'SELECT SUM(cost) * 1.5  as total_cost FROM ingredients WHERE id_ingredient IN('. join(", ", $ingredients). ')';
+		$data = $this->mysql->query($query);
+    	$register = $data->fetch_assoc();
+		
+		return $register['total_cost'];
+    }
 }

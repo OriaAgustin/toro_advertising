@@ -26,4 +26,16 @@ class pizza_catalog_controller{
 
     	return $this->pizza_catalog_view->generate_order_pizza($id_pizza, $pizza[$id_pizza], $added_ingredients[$id_pizza], $ingredients);
     }
+
+	public function generate_add_ingredient_button($ingredient_li_id){
+		return $this->pizza_catalog_view->generate_add_ingredient_button($ingredient_li_id);
+	}
+
+	public function generate_remove_ingredient_button($ingredient_li_id){
+		return $this->pizza_catalog_view->generate_remove_ingredient_button($ingredient_li_id);
+	}
+
+	public function recalculate_pizza_cost($ingredients){
+		return $this->pizza_catalog_model->get_pizza_cost($ingredients);
+	}
 }
