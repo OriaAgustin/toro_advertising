@@ -1,7 +1,7 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT']. '/private/views/pizza_catalog_view.php');
-require_once($_SERVER['DOCUMENT_ROOT']. '/private/models/pizza_catalog_model.php');
+require_once($_SERVER['DOCUMENT_ROOT']. '/private/pizza_catalog_view.php');
+require_once($_SERVER['DOCUMENT_ROOT']. '/private/pizza_catalog_model.php');
 
 class pizza_catalog_controller{
     private $pizza_catalog_view;

@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']. '/private/controllers/pizza_catalog_controller.php');
+require_once($_SERVER['DOCUMENT_ROOT']. '/private/pizza_catalog_controller.php');
 
 $pizza_catalog_controller = new pizza_catalog_controller();
 

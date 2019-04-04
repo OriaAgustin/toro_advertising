@@ -6,7 +6,7 @@ class pizza_catalog_model{
     private $mysql;
 
     public function __construct(){
-    	$this->mysql = new mysqli('localhost', 'root', '', 'toro_advertising');
+    	$this->mysql = new mysqli('localhost', 'toro_pizza', 'thebestpizzaontheuniverse', 'toro_advertising');
     }
 
     public function get_pizzas($id_pizza){

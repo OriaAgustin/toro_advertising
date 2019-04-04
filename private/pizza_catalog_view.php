@@ -83,7 +83,7 @@ class pizza_catalog_view{
 			$added_ingredients_lis[] = '<li id="added_ingredient_'. $id_ingredient. '" class="ingredient_li"><div class="ingredient_div">'. $added_ingredient['name']. '</div>'. $remove_ingredient_button. '</li>';
 		}
 		$added_ingredients = '<ul id="added_ingredients_ul" class="ingredients_ul">'. join("", $added_ingredients_lis). '</ul>';
-		$added_ingredients_title = '<h4>Tu pizza ya tiene...</h4>'; 
+		$added_ingredients_title = '<h4>Tu pizza ya tiene:</h4>'; 
 		$added_ingredients = '<div class="ingredients_selector_container">'. $added_ingredients_title. $added_ingredients. '</div>';
 
 		return $added_ingredients;
@@ -99,7 +99,7 @@ class pizza_catalog_view{
 			$not_added_ingredients_lis[] = '<li id="not_added_ingredient_'. $id_ingredient. '" class="ingredient_li"><div class="ingredient_div">'. $not_added_ingredient['name']. '</div>'. $add_ingredient_button. '</li>';
 		}
 		$not_added_ingredients = '<ul id="not_added_ingredients_ul" class="ingredients_ul">'. join("", $not_added_ingredients_lis). '</ul>';
-		$not_added_ingredients_title = "<h4>Tu pizza podr&iacute;a tener...</h4>";
+		$not_added_ingredients_title = "<h4>Le puedes agregar:</h4>";
 		$not_added_ingredients = '<div class="ingredients_selector_container">'. $not_added_ingredients_title. $not_added_ingredients. '</div>';
 
 		return $not_added_ingredients;
