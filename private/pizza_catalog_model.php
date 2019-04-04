@@ -1,7 +1,5 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT']. '/private/kint.phar');
-
 class pizza_catalog_model{
     private $mysql;
 
