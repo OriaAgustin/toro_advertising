@@ -11,6 +11,7 @@ function remove_ingredient(ingredient_li_id){
 	$('not_added_ingredients_ul').insert(ingredient_li);
 	generate_ingredients_selector_button('add', ingredient_li.id);
 	recalculate_pizza_cost();
+	Sortable.create('added_ingredients_ul');
 }
 
 function add_ingredient(ingredient_li_id){
@@ -20,6 +21,7 @@ function add_ingredient(ingredient_li_id){
 	$('added_ingredients_ul').insert(ingredient_li);
 	generate_ingredients_selector_button('remove', ingredient_li.id);
 	recalculate_pizza_cost();
+	Sortable.create('added_ingredients_ul');
 }
 
 function generate_ingredients_selector_button(button_type, ingredient_li_id){
@@ -39,17 +41,19 @@ function recalculate_pizza_cost(){
 	added_ingredients_ul.childElements().each(function(li){
 		ingredients.push(li.id.replace('added_ingredient_', ''));
 	});
+	if(ingredients.length > 0){
+		var ajax_data = {ajax: 'recalculate_pizza_cost', ingredients: JSON.stringify(ingredients)}
 
-	var ajax_data = {ajax: 'recalculate_pizza_cost', ingredients: JSON.stringify(ingredients)}
-
-	new Ajax.Request('index.php', {
-		parameters: ajax_data,
-		onSuccess: function(response) {
-			console.log(response.responseText);
-			console.log($('pizza_cost').text);
-			$('pizza_cost').textContent = response.responseText + '\u20AC';
-	  	}
-	});
+		new Ajax.Request('index.php', {
+			parameters: ajax_data,
+			onSuccess: function(response) {
+				$('pizza_cost').textContent = response.responseText + '\u20AC';
+		  	}
+		});	
+	}else{
+		$('pizza_cost').textContent = "0.00" + '\u20AC';
+	}
+	
 }
 
 function ajax_updater(data){
