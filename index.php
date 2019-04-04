@@ -16,6 +16,9 @@ switch($_REQUEST['ajax']){
 	case "recalculate_pizza_cost":
 		print $pizza_catalog_controller->recalculate_pizza_cost($_REQUEST['ingredients']);
 		break;
+	case "generate_ok_message":
+		print $pizza_catalog_controller->generate_ok_message();
+		break;
 	default:
 		print $pizza_catalog_controller->generate_pizza_catalog();
 }

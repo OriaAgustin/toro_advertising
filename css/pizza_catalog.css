@@ -5,7 +5,7 @@ body{
 #brand_banner{
 	width: 100%;
 	height: 200px;
-	background-color: red;
+	background-color: #DF2241;
 	text-align: center;
 }
 
@@ -15,14 +15,12 @@ body{
 }
 
 #pizza_catalog{
-	box-sizing: border-box;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .pizza_div{
-	border: 1px black;
-	box-sizing: border-box;
-	float: left;
-	padding: 20px;
 	width: 605px;
 }
 
@@ -64,12 +62,21 @@ body{
 }
 
 #order_pizza{
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#ingredients_selector{
+	display: flex;
+	justify-content: center;
 }
 
 .ingredients_selector_container{
-	display: inline-table;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 }
 
 .ingredients_ul{
@@ -77,30 +84,99 @@ body{
 }
 
 .ingredient_li{
-	border: 1px solid black;
+	border: 2px solid black;
 	padding: 5px;
 	margin-bottom: 2px;
 	width: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 5px;
 }
 
-.ingredient_div{
-	display: inline-block;
-	width: 175px;
+.added_ingredient_li{
+	cursor: grab;
 }
 
 .ingredients_selector_remove_button{
-	background-color: red;
+	background-color: #DF2241;
 	color: white;
+	font-weight: bold;
 	border: none;
 	border-radius: 5px;
 	padding: 5px;
+	cursor: pointer;
 }
 
-.ingredients_selector_add_button{
-	background-color: #148F6A;
+.ingredients_selector_remove_button:hover{
+	background-color: #CA1D3A;
 	color: white;
+	font-weight: bold;
 	border: none;
 	border-radius: 5px;
 	padding: 5px;
-	float: right;
+	cursor: pointer;
+}
+
+.ingredients_selector_add_button, #done_button{
+	background-color: #148F6A;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.ingredients_selector_add_button:hover, #done_button:hover{
+	background-color: #117959;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#go_back_button{
+	background-color: #DDDDDD;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#go_back_button:hover{
+	background-color: #DDDDDD;
+	color: #148F6A;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.navigation_button{
+	margin: 5px;
+}
+
+#ok_message{
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#done_title{
+	font-weight: bold;
+	font-size: 50px;
+}
+
+#done_text{
+	font-weight: bold;
+	font-size: 35px;
 }

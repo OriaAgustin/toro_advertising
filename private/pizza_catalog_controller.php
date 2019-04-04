@@ -38,4 +38,8 @@ class pizza_catalog_controller{
 	public function recalculate_pizza_cost($ingredients){
 		return $this->pizza_catalog_model->get_pizza_cost($ingredients);
 	}
+
+    public function generate_ok_message(){
+        return $this->pizza_catalog_view->generate_ok_message();
+    }
 }

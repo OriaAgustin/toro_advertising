@@ -1,7 +1,14 @@
 function order_pizza(id_pizza){
 	var ajax_data = {ajax: "order_pizza", id_pizza: id_pizza}
 
-	ajax_updater(ajax_data);
+	new Ajax.Request('index.php', {
+		parameters: ajax_data,
+		onSuccess: function(response) {
+			$('pizza_catalog').remove();
+			$$('body')[0].insert(response.responseText);
+	    	Sortable.create('added_ingredients_ul');
+	  	}
+	});
 }
 
 function remove_ingredient(ingredient_li_id){
@@ -56,13 +63,26 @@ function recalculate_pizza_cost(){
 	
 }
 
-function ajax_updater(data){
+function go_back(){
+	var ajax_data = {ajax: "go_back"}
+
 	new Ajax.Request('index.php', {
-		parameters: data,
+		parameters: ajax_data,
 		onSuccess: function(response) {
-			$('pizza_catalog').remove();
-			$$('body')[0].insert(response.responseText);
+			$$('body')[0].innerHTML = response.responseText;
 	    	Sortable.create('added_ingredients_ul');
+	  	}
+	});
+}
+
+function generate_ok_message(){
+	var ajax_data = {ajax: "generate_ok_message"}
+
+	new Ajax.Request('index.php', {
+		parameters: ajax_data,
+		onSuccess: function(response) {
+			$('order_pizza').remove();
+			$$('body')[0].insert(response.responseText);
 	  	}
 	});
 }

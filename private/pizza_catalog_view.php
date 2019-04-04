@@ -78,8 +78,12 @@ class pizza_catalog_view{
 		$added_ingredients = $this->generate_added_ingredients($added_ingredients);
 		$not_added_ingredients = $this->generate_not_added_ingredients($not_added_ingredients);
 		$ingredients_selector = '<div id="ingredients_selector">'. $added_ingredients. $not_added_ingredients. '</div>';
+        
+        $go_back_button = '<input type="button" value="Volver" onclick="go_back();" id="go_back_button" class="navigation_button">';
+        $done_button = '<input type="button" value="Asi quiero mi pizza!" onclick="generate_ok_message();" id="done_button" class="navigation_button">';;
+        $navigation_buttons = '<div id="navigation_buttons_div">'. $go_back_button. $done_button. '</div>';
 
-		$order_pizza = '<div id="order_pizza">'. $pizza_name. $pizza_image. $pizza_cost. $ingredients_selector. '</div>';
+		$order_pizza = '<div id="order_pizza">'. $pizza_name. $pizza_image. $pizza_cost. $ingredients_selector. $navigation_buttons. '</div>';
 
 		return $order_pizza;
     }
@@ -87,7 +91,7 @@ class pizza_catalog_view{
     private function generate_added_ingredients($added_ingredients){
     	foreach($added_ingredients as $id_ingredient => $added_ingredient){
 			$remove_ingredient_button = $this->generate_remove_ingredient_button('added_ingredient_'. $id_ingredient);
-			$added_ingredients_lis[] = '<li id="added_ingredient_'. $id_ingredient. '" class="ingredient_li"><div class="ingredient_div">'. $added_ingredient['name']. '</div>'. $remove_ingredient_button. '</li>';
+			$added_ingredients_lis[] = '<li id="added_ingredient_'. $id_ingredient. '" class="ingredient_li added_ingredient_li"><div class="ingredient_div">'. $added_ingredient['name']. '</div>'. $remove_ingredient_button. '</li>';
 		}
 		$added_ingredients = '<ul id="added_ingredients_ul" class="ingredients_ul">'. join("", $added_ingredients_lis). '</ul>';
 		$added_ingredients_title = '<h4>Tu pizza ya tiene:</h4>'; 
@@ -114,5 +118,11 @@ class pizza_catalog_view{
 
     public function generate_add_ingredient_button($ingredient_li_id){
     	return '<input type="button" value="+" onclick="add_ingredient(\''. $ingredient_li_id. '\');" class="ingredients_selector_add_button">';
+    }
+
+    public function generate_ok_message(){
+        $ok_message = '<div id="ok_message"><div id="done_title">Listo!</div><div id="done_text">Tu pizza esta en proceso de preparaci&oacute;n y en un rato podr&aacute;s difrutarla :).</div></div>';
+
+        return $ok_message;
     }
 }
