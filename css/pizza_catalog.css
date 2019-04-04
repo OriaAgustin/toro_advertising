@@ -1,0 +1,77 @@
+body{
+	font-family: "HelveticaNeue-CondensedBold", "Arial Narrow",Arial;
+}
+
+#pizza_catalog{
+	box-sizing: border-box;
+}
+
+.pizza_div{
+	border: 1px black;
+	box-sizing: border-box;
+	float: left;
+	padding: 20px;
+}
+
+.pizza_name{
+	font-size: 30px;
+}
+
+.pizza_cost{
+	font-size: 20px;
+	color: darkgreen;
+	font-weight: bold;
+}
+
+.order_button{
+	background-color: #148F6A;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.order_button:hover{
+	background-color: #117959;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.ingredients_selector_container{
+	display: inline-table;
+}
+
+.ingredients_ul{
+	list-style: none;
+}
+
+.ingredient_li{
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 2px;
+}
+
+.ingredient_div{
+	display: inline-block;
+}
+
+.ingredients_selector_remove_button{
+	background-color: red;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+}
+
+.ingredients_selector_add_button{
+	background-color: #148F6A;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+}
