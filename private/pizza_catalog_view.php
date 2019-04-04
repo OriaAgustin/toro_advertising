@@ -57,9 +57,16 @@ class pizza_catalog_view{
     }
 
     private function generate_body($inner_html){
-        $body = '<body>'. $inner_html. '</body>';
+        $brand_banner = $this->generate_brand_banner();
+        $body = '<body>'. $brand_banner. $inner_html. '</body>';
 
         return $body;
+    }
+
+    private function generate_brand_banner(){
+        $brand_banner = '<div id="brand_banner"><img src="/img/toro_pizza_logo.jpg" id="toro_pizza_logo"></div>';
+
+        return $brand_banner;
     }
 
     public function generate_order_pizza($id_pizza, $pizza, $added_ingredients, $ingredients){

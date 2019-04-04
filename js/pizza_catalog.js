@@ -60,9 +60,8 @@ function ajax_updater(data){
 	new Ajax.Request('index.php', {
 		parameters: data,
 		onSuccess: function(response) {
-			var body = $$('body');
-	    	body = body[0];
-	    	body.innerHTML = response.responseText;
+			$('pizza_catalog').remove();
+			$$('body')[0].insert(response.responseText);
 	    	Sortable.create('added_ingredients_ul');
 	  	}
 	});
